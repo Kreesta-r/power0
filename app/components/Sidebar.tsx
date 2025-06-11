@@ -191,7 +191,7 @@ export default function Sidebar({ onSlideUpdate }: SidebarProps = {}) {
     setDragOverIndex(null)
   }
 
-  // Render content preview for sidebar thumbnails - matching main slide rendering
+  // Render content preview for sidebar thumbnails - to match main slide rendering
   const renderThumbnailContent = (content: string) => {
     const lines = content.split('\n').filter(line => line.trim() !== '')
     let bulletPoints: string[] = []
