@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react'
 import { useState, useEffect } from 'react'
 import { Move, Plus } from 'lucide-react'
 
-// Define the Slide type to match your database structure
+
 interface Slide {
   id: number
   title: string

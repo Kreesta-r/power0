@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Edit3, Save, X, Plus, Trash2, MoreHorizontal } from 'lucide-react'
 
-// Define the Slide type to match your database structure
+
 interface Slide {
   id: number
   title: string
@@ -19,7 +19,7 @@ interface PresentationViewerProps {
   onSlideCreate: (slide: Omit<Slide, 'id'>) => void
 }
 
-// Get API base URL from environment variable with fallback
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001'
 
 export default function PresentationViewer({ 
