@@ -189,11 +189,11 @@ export default function PresentationViewer({
       // Main title (# ) - Center aligned, large
       if (line.startsWith('# ')) {
         return (
-          <div key={index} className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800 leading-tight">
+          <div key={index} className="text-center mb-4">
+            <h1 className="text-2xl font-bold text-gray-800 leading-tight">
               {line.slice(2)}
             </h1>
-            <div className="w-16 h-0.5 bg-green-500 mx-auto mt-6"></div>
+            <div className="w-12 h-0.5 bg-green-500 mx-auto mt-3"></div>
           </div>
         )
       }
@@ -201,8 +201,8 @@ export default function PresentationViewer({
       // Section headers (## ) - Left aligned, medium
       if (line.startsWith('## ')) {
         return (
-          <div key={index} className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-700 mb-3">
+          <div key={index} className="mb-3">
+            <h2 className="text-lg font-semibold text-gray-700 mb-2">
               {line.slice(3)}
             </h2>
           </div>
@@ -212,7 +212,7 @@ export default function PresentationViewer({
       // Subsection headers (### ) - Left aligned, smaller
       if (line.startsWith('### ')) {
         return (
-          <h3 key={index} className="text-lg font-medium text-gray-600 mb-4">
+          <h3 key={index} className="text-base font-medium text-gray-600 mb-2">
             {line.slice(4)}
           </h3>
         )
@@ -230,15 +230,15 @@ export default function PresentationViewer({
         
         if (isLastBullet) {
           const listItems = bulletPoints.map((item, i) => (
-            <li key={i} className="text-xl mb-3 text-gray-700 leading-relaxed flex items-start">
-              <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full mr-4 mt-2.5 flex-shrink-0"></span>
+            <li key={i} className="text-sm mb-1 text-gray-700 leading-relaxed flex items-start">
+              <span className="inline-block w-1 h-1 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
               <span dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-800 font-semibold">$1</strong>').replace(/\*(.*?)\*/g, '<em class="text-gray-600">$1</em>') }}></span>
             </li>
           ))
           bulletPoints = [] // Reset for next list
           
           return (
-            <ul key={index} className="mb-6">
+            <ul key={index} className="mb-3">
               {listItems}
             </ul>
           )
@@ -251,8 +251,8 @@ export default function PresentationViewer({
         const match = line.match(/^\d+\.\s(.*)/)
         if (match) {
           return (
-            <div key={index} className="text-sm mb-3 text-gray-700 leading-relaxed flex items-start">
-              <span className="inline-block w-6 h-6 bg-green-500 text-white text-sm font-medium rounded-full mr-4 flex-shrink-0 flex items-center justify-center">
+            <div key={index} className="text-sm mb-2 text-gray-700 leading-relaxed flex items-start">
+              <span className="inline-block w-5 h-5 bg-green-500 text-white text-xs font-medium rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
                 {line.match(/^\d+/)?.[0]}
               </span>
               <span 
@@ -275,7 +275,7 @@ export default function PresentationViewer({
       return (
         <p 
           key={index} 
-          className="text-md mb-4 text-gray-700 leading-relaxed"
+          className="text-sm mb-2 text-gray-700 leading-relaxed"
           dangerouslySetInnerHTML={{ __html: processedLine }}
         />
       )
@@ -365,7 +365,7 @@ export default function PresentationViewer({
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-3xl aspect-[16/9] bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
           {/* Content area */}
-          <div className="flex-1 p-8 bg-white overflow-hidden">
+          <div className="flex-1 p-6 bg-white overflow-hidden">
             <div className="h-full w-full">
               {isEditing ? (
                 <div className="h-full flex flex-col space-y-6">
@@ -400,7 +400,7 @@ export default function PresentationViewer({
                   </div>
                 </div>
               ) : (
-                <div className="h-full flex flex-col justify-start">
+                <div className="h-full flex flex-col justify-start overflow-y-auto">
                   {renderContent(slide.content)}
                 </div>
               )}
